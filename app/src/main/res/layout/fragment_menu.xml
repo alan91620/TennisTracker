@@ -59,7 +59,7 @@ android:layout_height="match_parent">
                     android:orientation="horizontal"></LinearLayout>
 
                 <Button
-                    android:id="@+id/button16"
+                    android:id="@+id/buttonNewMatch"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -67,6 +67,7 @@ android:layout_height="match_parent">
                     android:text="Nouveau Match"
                     android:textAllCaps="false"
                     android:textColor="#FFFFFF"
+                    android:onClick="newGame"
                     android:textSize="30sp" />
 
                 <LinearLayout
@@ -76,17 +77,6 @@ android:layout_height="match_parent">
                     android:orientation="vertical">
 
                 </LinearLayout>
-
-                <Button
-                    android:id="@+id/button17"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@drawable/button_active"
-                    android:text="Match Précédent"
-                    android:textAllCaps="false"
-                    android:textColor="#FFFFFF"
-                    android:textSize="30sp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"

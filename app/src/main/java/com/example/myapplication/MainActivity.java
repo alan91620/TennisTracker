@@ -1,31 +1,27 @@
 package com.example.myapplication;
 
+import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
-import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.DisplayCutout;
-import android.view.LayoutInflater;
+import android.os.Handler;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.Window;
 import android.view.WindowManager;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.fragment.app.FragmentActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
+
+import com.example.myapplication.NewMatch.NewMatchActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity  {
 
     ConstraintLayout linearLayout;
+    private Handler handler;
 
 
     @Override
@@ -36,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
         this.getWindow().setUiOptions(WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES);
 
         setContentView(R.layout.activity_main);
-
 
 
         BottomNavigationView navView = findViewById(R.id.nav_view);
@@ -58,7 +53,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    public void newGame(View v) {
+        Intent intent = new Intent(this, NewMatchActivity.class);
 
+        startActivity(intent);
+    }
 
 }
 
