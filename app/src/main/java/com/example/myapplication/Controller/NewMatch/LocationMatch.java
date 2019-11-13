@@ -1,45 +1,42 @@
 package com.example.myapplication.Controller.NewMatch;
 
-import androidx.annotation.RequiresApi;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.fragment.app.FragmentActivity;
-
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.location.Criteria;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.EditText;
+
+import androidx.annotation.RequiresApi;
+import androidx.fragment.app.FragmentActivity;
 
 import com.example.myapplication.R;
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
-import android.Manifest;
-import android.content.pm.PackageManager;
-import android.view.View;
-import android.widget.TextView;
+import java.io.IOException;
+import java.util.List;
+import java.util.Locale;
 
 
 public class LocationMatch extends FragmentActivity implements LocationListener,OnMapReadyCallback {
-    ConstraintLayout linearLayout;
     private GoogleMap mMap;
-    private TextView t;
 
-    private static final String[] INITIAL_PERMS = {
-            Manifest.permission.ACCESS_FINE_LOCATION,
-            Manifest.permission.READ_CONTACTS
-    };
-    private static final String[] CAMERA_PERMS = {
-            Manifest.permission.CAMERA
-    };
-    private static final String[] CONTACTS_PERMS = {
-            Manifest.permission.READ_CONTACTS
-    };
     private static final String[] LOCATION_PERMS = {
             Manifest.permission.ACCESS_FINE_LOCATION
     };
@@ -48,25 +45,36 @@ public class LocationMatch extends FragmentActivity implements LocationListener,
     private static final int CONTACTS_REQUEST = INITIAL_REQUEST + 2;
     private static final int LOCATION_REQUEST = INITIAL_REQUEST + 3;
 
-    double latitude;
-    double longitude;
+    double latitude=0;
+    double longitude=0;
 
     public LocationManager locationManager;
-    public Criteria criteria;
     public String bestProvider;
+
+    private EditText Adresse;
+    Geocoder geocoder;
+    List<Address> addresses;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_location_match);
+        // In Activity's onCreate() for instance
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            Window w = getWindow();
+            w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+        }
+
+        Adresse = findViewById(R.id.editPostalText);
+        Adresse.setText("Appuyez sur 'Localiser' pour situer le match :");
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
-        //mapFragment.getMapAsync(this);
+        mapFragment.getMapAsync(this);
 
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-
+        choseProvider();
 
     }
 
@@ -80,39 +88,46 @@ public class LocationMatch extends FragmentActivity implements LocationListener,
         return;
     }
 
+public void choseProvider(){
+
+    //criteria = new Criteria();
+
+    // Pour indiquer la précision voulue
+// On peut mettre ACCURACY_FINE pour une haute précision ou ACCURACY_COARSE pour une moins bonne précision
+   // criteria.setAccuracy(Criteria.ACCURACY_FINE);
+
+// Est-ce que le fournisseur doit être capable de donner une altitude ?
+   // criteria.setAltitudeRequired(false);
+
+// Est-ce que le fournisseur doit être capable de donner une direction ?
+   // criteria.setBearingRequired(false);
+
+// Est-ce que le fournisseur peut être payant ?
+   // criteria.setCostAllowed(false);
+
+// Pour indiquer la consommation d'énergie demandée
+// Criteria.POWER_HIGH pour une haute consommation, Criteria.POWER_MEDIUM pour une consommation moyenne et Criteria.POWER_LOW pour une basse consommation
+  //  criteria.setPowerRequirement(Criteria.POWER_HIGH);
+
+// Est-ce que le fournisseur doit être capable de donner une vitesse ?
+   // criteria.setSpeedRequired(false);
+
+    //bestProvider = String.valueOf(locationManager.getBestProvider(criteria, true));
+    bestProvider = LocationManager.GPS_PROVIDER;
+}
 
     public void getLocation(View v) {
 
-        /*if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            getLocation();
-        }*/
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            getcoord();
+        }
     }
 
     @SuppressLint("MissingPermission")
     @RequiresApi(api = Build.VERSION_CODES.M)
-    protected void getcoord() {
+    protected void getcoord()  {
         if (canAccessLocation()) {
-            criteria = new Criteria();
-            bestProvider = String.valueOf(locationManager.getBestProvider(criteria, true)).toString();
-            // Pour indiquer la précision voulue
-// On peut mettre ACCURACY_FINE pour une haute précision ou ACCURACY_COARSE pour une moins bonne précision
-            criteria.setAccuracy(Criteria.ACCURACY_FINE);
 
-// Est-ce que le fournisseur doit être capable de donner une altitude ?
-            criteria.setAltitudeRequired(false);
-
-// Est-ce que le fournisseur doit être capable de donner une direction ?
-            criteria.setBearingRequired(false);
-
-// Est-ce que le fournisseur peut être payant ?
-            criteria.setCostAllowed(false);
-
-// Pour indiquer la consommation d'énergie demandée
-// Criteria.POWER_HIGH pour une haute consommation, Criteria.POWER_MEDIUM pour une consommation moyenne et Criteria.POWER_LOW pour une basse consommation
-            criteria.setPowerRequirement(Criteria.POWER_HIGH);
-
-// Est-ce que le fournisseur doit être capable de donner une vitesse ?
-            criteria.setSpeedRequired(false);
 
             //You can still do this if you like, you might get lucky:
             @SuppressLint("MissingPermission") Location location = locationManager.getLastKnownLocation(bestProvider);
@@ -127,6 +142,18 @@ public class LocationMatch extends FragmentActivity implements LocationListener,
                 locationManager.requestLocationUpdates(bestProvider, 400, 1, this);
 
             }
+
+            onMapReady(mMap);
+
+            geocoder = new Geocoder(this, Locale.getDefault());
+
+            try {
+                addresses = geocoder.getFromLocation(latitude, longitude, 1);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Adresse.setText(addresses.get(0).getAddressLine(0));
+
         }
         else
         {
@@ -137,23 +164,20 @@ public class LocationMatch extends FragmentActivity implements LocationListener,
         }
     }
 
-    /*@Override
-    public void onMapReady(GoogleMap googleMap) {
-        mMap = googleMap;
 
-        // Add a marker in the last known location and move the camera
-        if (locationManager != null) {
-            @SuppressLint("MissingPermission") Location l = locationManager.getLastKnownLocation(bestProvider);
+    public void newPictureMatch (View v) {
+        Intent intent = new Intent(this, LocationMatch.class);
 
-            if (l != null) {
-                LatLng coord = new LatLng(l.getLatitude(), l.getLongitude());
-                mMap.addMarker(new MarkerOptions().position(coord).title("Last position"));
-                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(coord, 15));
+        startActivity(intent);
+    }
 
-                t.setText("Latitude = " + l.getLatitude() + "\n" + "Longitude =" + l.getLongitude());
-            }
-        }
-    }*/
+    @Override
+    public void onMapReady(GoogleMap map) {
+        mMap = map;
+        LatLng coord = new LatLng(latitude, longitude);
+        mMap.addMarker(new MarkerOptions().position(coord).title("Last position"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(coord, 15));
+    }
 
     private boolean canAccessLocation() {
         return(hasPermission(Manifest.permission.ACCESS_FINE_LOCATION));
@@ -188,12 +212,6 @@ public class LocationMatch extends FragmentActivity implements LocationListener,
 
     @Override
     public void onProviderDisabled(String provider) {
-
-    }
-
-
-    @Override
-    public void onMapReady(GoogleMap googleMap) {
 
     }
 }
