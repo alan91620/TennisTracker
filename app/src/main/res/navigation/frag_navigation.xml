@@ -20,4 +20,5 @@
         android:name="com.example.myapplication.HistoriqueFrag.HistoriqueFragment"
         tools:layout="@layout/fragment_historique" />
 
+
 </navigation>
