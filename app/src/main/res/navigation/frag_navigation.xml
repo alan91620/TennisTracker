@@ -7,17 +7,17 @@
 
     <fragment
         android:id="@+id/navigation_menu"
-        android:name="com.example.myapplication.MenuFrag.MenuFragment"
+        android:name="com.example.myapplication.Controller.MenuFrag.MenuFragment"
         tools:layout="@layout/fragment_menu" />
 
     <fragment
         android:id="@+id/navigation_progress"
-        android:name="com.example.myapplication.ProgressFrag.ProgressGameFragment"
+        android:name="com.example.myapplication.Controller.ProgressFrag.ProgressGameFragment"
         tools:layout="@layout/fragment_progress" />
 
     <fragment
         android:id="@+id/navigation_historique"
-        android:name="com.example.myapplication.HistoriqueFrag.HistoriqueFragment"
+        android:name="com.example.myapplication.Controller.HistoriqueFrag.HistoriqueFragment"
         tools:layout="@layout/fragment_historique" />
 
 

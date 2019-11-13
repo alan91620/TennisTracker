@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.Controller;
 
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
@@ -15,7 +15,8 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
-import com.example.myapplication.NewMatch.LocationMatch;
+import com.example.myapplication.Controller.NewMatch.LocationMatch;
+import com.example.myapplication.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 
