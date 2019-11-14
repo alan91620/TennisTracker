@@ -43,6 +43,9 @@ public class TennisGame {
         else if (point == 3){
             cvtPoint = "40";
         }
+        else if (point == 4){
+            cvtPoint = "AV";
+        }
         return cvtPoint;
     }
 
@@ -52,7 +55,7 @@ public class TennisGame {
         scores.add(1,String.valueOf(playerOneGames));
         scores.add(2,String.valueOf(playerOneSets));
         scores.add(3,convertPoints(playerTwoPoints));
-        scores.add(3,String.valueOf(playerTwoGames));
+        scores.add(4,String.valueOf(playerTwoGames));
         scores.add(5,String.valueOf(playerTwoSets));
 
         return  scores;
@@ -68,10 +71,10 @@ public class TennisGame {
         if ((playerOnePoints == 4 && playerTwoPoints <= 2) || (playerTwoPoints == 4 && playerOnePoints <= 2)) {
             if (playerOnePoints == 4) {
                 resetPoints();
-                playerOneSets++;
+                playerOneGames++;
             } else if ((playerTwoPoints == 4)) {
                 resetPoints();
-                playerTwoSets++;
+                playerTwoGames++;
             }
         }
         if (playerOnePoints == 4 && playerTwoPoints == 4) {
@@ -81,10 +84,10 @@ public class TennisGame {
         if ((playerOnePoints == 5 && playerTwoPoints <= 3) || (playerTwoPoints == 5 && playerOnePoints <= 5)) {
             if (playerOnePoints == 5) {
                 resetPoints();
-                playerOneSets++;
+                playerOneGames++;
             } else if ((playerTwoPoints == 5)) {
                 resetPoints();
-                playerTwoSets++;
+                playerTwoGames++;
             }
         }
     }

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -22,6 +23,7 @@ public class ScoreBoard extends AppCompatActivity {
     Button p1;
     Button p2;
     private Handler handler;
+    TennisGame game;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,10 +38,24 @@ public class ScoreBoard extends AppCompatActivity {
 
         handler = new Handler();
 
-        Player player1 = new Player("test","test",13,13,13,"frace");
+        final Player player1 = new Player("test","test",13,13,13,"frace");
         Player player2 = new Player("2","2",13,13,13,"frace");
 
-        TennisGame game = new TennisGame(player1, player2);
+        p1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                player1_score();
+            }
+        });
+
+        p2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                player2_score();
+            }
+        });
+
+        game = new TennisGame(player1, player2);
         final ArrayList<String> score = game.getScore();
 
         Runnable runnable = new Runnable() {
@@ -50,6 +66,8 @@ public class ScoreBoard extends AppCompatActivity {
                     public void run() {
                         pt1.setText(score.get(0));
                         pt2.setText(score.get(3));
+                        jeu1.setText(score.get(1));
+                        jeu2.setText(score.get(4));
                     }
                 });
             }
@@ -57,5 +75,35 @@ public class ScoreBoard extends AppCompatActivity {
 
         new Thread(runnable).start();
 
+    }
+
+    public void updateUI_Scores(){
+        final ArrayList<String> score = game.getScore();
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        pt1.setText(score.get(0));
+                        pt2.setText(score.get(3));
+                        jeu1.setText(score.get(1));
+                        jeu2.setText(score.get(4));
+                    }
+                });
+            }
+        };
+
+        new Thread(runnable).start();
+    }
+
+    public void player1_score(){
+        game.PlayerOneScore();
+        updateUI_Scores();
+    }
+
+    public void player2_score(){
+        game.PlayerTwoScore();
+        updateUI_Scores();
     }
 }

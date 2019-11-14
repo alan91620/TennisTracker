@@ -21,6 +21,11 @@ import com.example.myapplication.Controller.NewMatch.LocationMatch;
 import com.example.myapplication.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
 
 public class MainActivity extends AppCompatActivity implements LocationListener{
 
@@ -74,6 +79,25 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
         Intent intent = new Intent(this, ScoreBoard.class);
 
         startActivity(intent);
+    }
+
+    public void mySqlConnector(){
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                try{
+                    Class.forName("com.mysql.jdbc.Driver");
+                    Connection con= DriverManager.getConnection(
+                            "jdbc:mysql://localhost:3306/tennis_tracker","root","");
+                    Statement stmt=con.createStatement();
+                    //ResultSet rs=stmt.executeQuery("select  from games");
+                    con.close();
+                }
+                catch(Exception e){ System.out.println(e);
+                }
+            }
+        };
+        new Thread(runnable).start();
     }
 
 
