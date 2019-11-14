@@ -63,6 +63,7 @@ public class LocationMatch extends FragmentActivity implements LocationListener,
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_location_match);
         // In Activity's onCreate() for instance
+        //No title and notification bar
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             Window w = getWindow();
             w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
@@ -143,6 +144,8 @@ public void choseProvider(){
             //You can still do this if you like, you might get lucky:
             @SuppressLint("MissingPermission") Location location = locationManager.getLastKnownLocation(bestProvider);
             if (location != null) {
+
+                locationManager.requestLocationUpdates(bestProvider, 400, 1, this);
                 Log.e("TAG", "GPS is on");
                 latitude = location.getLatitude();
                 longitude = location.getLongitude();
