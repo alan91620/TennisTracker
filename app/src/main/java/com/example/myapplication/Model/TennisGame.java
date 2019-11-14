@@ -13,10 +13,41 @@ public class TennisGame {
     private int playerTwoSets = 0;
     private Player playerOne;
     private Player playerTwo;
+    Boolean p1isServing = false;
+    Boolean p2isServing = false;
+    Boolean p1StartServing = false;
+    Boolean p2StartServing = false;
 
     public TennisGame(Player playerOne, Player playerTwo) {
         this.playerOne = playerOne;
         this.playerTwo = playerTwo;
+        randServingPlayer();
+    }
+
+    public void randServingPlayer(){
+        try {
+            int gen = (Math.random() <= 0.5) ? 1 : 2;
+            if (gen == 1){
+                p1isServing = true;
+                p1StartServing = true;
+            }
+            else if (gen == 2){
+                p2isServing = true;
+                p2StartServing = true;
+            }
+            else {
+                throw (new Exception("Error"));
+            }
+        }
+        catch (Exception e){
+        }
+    }
+
+    public void swapService(){
+        Boolean mem;
+        mem = p1isServing;
+        p1isServing = p2isServing;
+        p2isServing = mem;
     }
 
     public void PlayerOneScore(){
@@ -27,6 +58,18 @@ public class TennisGame {
     public void PlayerTwoScore(){
         playerTwoPoints ++;
         checkForGame();
+    }
+
+    public void PlayerOneScoreGame(){
+        playerOneGames ++;
+        swapService();
+        checkForSet();
+    }
+
+    public void PlayerTwoScoreGame(){
+        playerTwoGames ++;
+        swapService();
+        checkForSet();
     }
 
     public String convertPoints(int point){
@@ -66,15 +109,20 @@ public class TennisGame {
         playerTwoPoints = 0;
     }
 
+    public void resetGames(){
+        playerOneGames = 0;
+        playerTwoGames = 0;
+    }
+
 
     public void checkForGame() {
         if ((playerOnePoints == 4 && playerTwoPoints <= 2) || (playerTwoPoints == 4 && playerOnePoints <= 2)) {
             if (playerOnePoints == 4) {
                 resetPoints();
-                playerOneGames++;
+                PlayerOneScoreGame();
             } else if ((playerTwoPoints == 4)) {
                 resetPoints();
-                playerTwoGames++;
+                PlayerTwoScoreGame();
             }
         }
         if (playerOnePoints == 4 && playerTwoPoints == 4) {
@@ -84,12 +132,37 @@ public class TennisGame {
         if ((playerOnePoints == 5 && playerTwoPoints <= 3) || (playerTwoPoints == 5 && playerOnePoints <= 5)) {
             if (playerOnePoints == 5) {
                 resetPoints();
-                playerOneGames++;
+                PlayerOneScoreGame();
             } else if ((playerTwoPoints == 5)) {
                 resetPoints();
-                playerTwoGames++;
+                PlayerTwoScoreGame();
             }
         }
+    }
+
+
+    public void checkForSet(){
+        //if (p1isServing == true){
+            if (playerOneGames > playerTwoGames+1 && playerOneGames >= 6){
+                playerOneSets ++;
+                resetGames();
+            }
+            else if (playerTwoGames > playerOneGames+1 && playerTwoGames >= 6){
+                playerTwoSets ++;
+                resetGames();
+            }
+        /**}
+        else if (p2isServing == true){
+            if (playerOneGames > playerTwoGames+1 && playerOneGames >= 6){
+                playerOneSets ++;
+                resetGames();
+            }
+            else if (playerTwoGames > playerOneGames+1 && playerTwoGames >= 6){
+                playerTwoSets ++;
+                resetGames();
+            }
+        }
+    }**/
     }
 
 
