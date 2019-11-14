@@ -5,6 +5,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.drawable.AnimationDrawable;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
@@ -19,6 +20,7 @@ import android.view.WindowManager;
 import android.widget.EditText;
 
 import androidx.annotation.RequiresApi;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.FragmentActivity;
 
 import com.example.myapplication.R;
@@ -52,6 +54,7 @@ public class LocationMatch extends FragmentActivity implements LocationListener,
     public String bestProvider;
 
     private EditText Adresse;
+    ConstraintLayout linearLayout;
     Geocoder geocoder;
     List<Address> addresses;
 
@@ -75,6 +78,14 @@ public class LocationMatch extends FragmentActivity implements LocationListener,
 
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         choseProvider();
+
+        linearLayout = (ConstraintLayout) findViewById(R.id.layoutLocation);
+
+        AnimationDrawable animationDrawable = (AnimationDrawable) linearLayout.getBackground();
+        animationDrawable.setEnterFadeDuration(2000);
+        animationDrawable.setExitFadeDuration(4000);
+        animationDrawable.start();
+
 
     }
 
@@ -136,23 +147,25 @@ public void choseProvider(){
                 latitude = location.getLatitude();
                 longitude = location.getLongitude();
                 Log.d("GPS", "getLocation: latitude:" + latitude + " longitude:" + longitude);
+                geocoder = new Geocoder(this, Locale.getDefault());
+
+                try {
+                    addresses = geocoder.getFromLocation(latitude, longitude, 1);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                Adresse.setText(addresses.get(0).getAddressLine(0));
 
             } else {
                 //This is what you need:
                 locationManager.requestLocationUpdates(bestProvider, 400, 1, this);
 
+
             }
 
             onMapReady(mMap);
 
-            geocoder = new Geocoder(this, Locale.getDefault());
 
-            try {
-                addresses = geocoder.getFromLocation(latitude, longitude, 1);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            Adresse.setText(addresses.get(0).getAddressLine(0));
 
         }
         else
@@ -166,7 +179,7 @@ public void choseProvider(){
 
 
     public void newPictureMatch (View v) {
-        Intent intent = new Intent(this, LocationMatch.class);
+        Intent intent = new Intent(this, PhotoMatch.class);
 
         startActivity(intent);
     }

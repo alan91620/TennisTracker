@@ -4,5 +4,6 @@
     <string name="title_progress">Partie en cours...</string>
     <string name="title_historique">Historique</string>
     <string name="title_activity_maps">Map</string>
+    <string name="take_photo">Take Photo</string>
 
 </resources>
