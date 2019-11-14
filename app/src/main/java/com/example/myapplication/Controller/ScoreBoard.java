@@ -20,6 +20,8 @@ public class ScoreBoard extends AppCompatActivity {
     TextView pt2;
     TextView jeu1;
     TextView jeu2;
+    TextView set1;
+    TextView set2;
     Button p1;
     Button p2;
     private Handler handler;
@@ -33,6 +35,8 @@ public class ScoreBoard extends AppCompatActivity {
         pt2 = findViewById(R.id.points_player2);
         jeu1 = findViewById(R.id.jeu_player1);
         jeu2 = findViewById(R.id.jeu_player2);
+        set1 = findViewById(R.id.set_player1);
+        set2 = findViewById(R.id.set_player2);
         p1 = findViewById(R.id.BtAdd_points1);
         p2 = findViewById(R.id.BtAdd_points2);
 
@@ -68,6 +72,8 @@ public class ScoreBoard extends AppCompatActivity {
                         pt2.setText(score.get(3));
                         jeu1.setText(score.get(1));
                         jeu2.setText(score.get(4));
+                        set1.setText(score.get(2));
+                        set2.setText(score.get(5));
                     }
                 });
             }
@@ -89,6 +95,8 @@ public class ScoreBoard extends AppCompatActivity {
                         pt2.setText(score.get(3));
                         jeu1.setText(score.get(1));
                         jeu2.setText(score.get(4));
+                        set1.setText(score.get(2));
+                        set2.setText(score.get(5));
                     }
                 });
             }
