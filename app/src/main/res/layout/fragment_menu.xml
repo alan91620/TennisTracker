@@ -50,7 +50,7 @@ android:layout_height="match_parent">
                         android:layout_width="239dp"
                         android:layout_height="174dp"
                         android:layout_weight="4"
-                        app:srcCompat="@drawable/blue_trophy_hi" />
+                        app:srcCompat="@drawable/logotennis" />
                 </LinearLayout>
 
                 <Button
