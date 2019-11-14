@@ -1,10 +1,16 @@
 package com.example.myapplication.Model;
 
 
+import java.util.ArrayList;
+
 public class TennisGame {
 
-    private int playerOneScore = 0;
-    private int playerTwoScore = 0;
+    private int playerOnePoints = 0;
+    private int playerOneGames = 0;
+    private int playerOneSets = 0;
+    private int playerTwoPoints = 0;
+    private int playerTwoGames = 0;
+    private int playerTwoSets = 0;
     private Player playerOne;
     private Player playerTwo;
 
@@ -13,75 +19,150 @@ public class TennisGame {
         this.playerTwo = playerTwo;
     }
 
-    public String getScore() {
+    public void PlayerOneScore(){
+        playerOnePoints ++;
+        checkForGame();
+    }
 
-        if (hasWinner()) {
-            return playerWithHighestScore() + " wins";
+    public void PlayerTwoScore(){
+        playerTwoPoints ++;
+        checkForGame();
+    }
+
+    public String convertPoints(int point){
+        String cvtPoint = "0";
+        if (point == 0){
+            cvtPoint = "0";
         }
-
-        if (hasAdvantage()) {
-            return "Advantage " + playerWithHighestScore();
+        else if (point == 1){
+            cvtPoint = "15";
         }
-
-        if (isDeuce())
-            return "Deuce";
-
-        if(playerOneScore == playerTwoScore) {
-            return translateScore(playerOneScore) + " all";
+        else if (point == 2){
+            cvtPoint = "30";
         }
-
-        return translateScore(playerOneScore) + "," + translateScore(playerTwoScore);
+        else if (point == 3){
+            cvtPoint = "40";
+        }
+        return cvtPoint;
     }
 
-    private boolean isDeuce() {
-        return playerOneScore >= 3 && playerTwoScore == playerOneScore;
+    public ArrayList<String> getScore(){
+        ArrayList<String> scores = new ArrayList<>();
+        scores.add(0,convertPoints(playerOnePoints));
+        scores.add(1,String.valueOf(playerOneGames));
+        scores.add(2,String.valueOf(playerOneSets));
+        scores.add(3,convertPoints(playerTwoPoints));
+        scores.add(3,String.valueOf(playerTwoGames));
+        scores.add(5,String.valueOf(playerTwoSets));
+
+        return  scores;
     }
 
-    private String playerWithHighestScore() {
-        if (playerOneScore > playerTwoScore) {
-            return playerOne.toString();
-        } else {
-            return playerTwo.toString();
+    public void resetPoints(){
+        playerOnePoints = 0;
+        playerTwoPoints = 0;
+    }
+
+
+    public void checkForGame() {
+        if ((playerOnePoints == 4 && playerTwoPoints <= 2) || (playerTwoPoints == 4 && playerOnePoints <= 2)) {
+            if (playerOnePoints == 4) {
+                resetPoints();
+                playerOneSets++;
+            } else if ((playerTwoPoints == 4)) {
+                resetPoints();
+                playerTwoSets++;
+            }
+        }
+        if (playerOnePoints == 4 && playerTwoPoints == 4) {
+            playerOnePoints = 3;
+            playerTwoPoints = 3;
+        }
+        if ((playerOnePoints == 5 && playerTwoPoints <= 3) || (playerTwoPoints == 5 && playerOnePoints <= 5)) {
+            if (playerOnePoints == 5) {
+                resetPoints();
+                playerOneSets++;
+            } else if ((playerTwoPoints == 5)) {
+                resetPoints();
+                playerTwoSets++;
+            }
         }
     }
 
-    private boolean hasWinner() {
-        if(playerTwoScore >= 4 && playerTwoScore >= playerOneScore + 2 )
-            return true;
-        if(playerOneScore >= 4 && playerOneScore >= playerTwoScore + 2)
-            return true;
-        return false;
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public int getPlayerOnePoints() {
+        return playerOnePoints;
     }
 
-    private boolean hasAdvantage() {
-        if (playerTwoScore >= 4 && playerTwoScore == playerOneScore + 1)
-            return true;
-        if (playerOneScore >= 4 && playerOneScore == playerTwoScore + 1)
-            return true;
-
-        return false;
-
+    public void setPlayerOnePoints(int playerOnePoints) {
+        this.playerOnePoints = playerOnePoints;
     }
 
-    public void playerOneScores() {
-        playerOneScore++;
+    public int getPlayerOneGames() {
+        return playerOneGames;
     }
 
-    public void playerTwoScores() {
-        playerTwoScore++;
+    public void setPlayerOneGames(int playerOneGames) {
+        this.playerOneGames = playerOneGames;
     }
 
-    private String translateScore(int score) {
-        switch (score) {
-            case 3:
-                return "Forty";
-            case 2:
-                return "Thirty";
-            case 1:
-                return "Fifteen";
-            case 0:
-                return "Love";
-        }
-        throw new IllegalArgumentException("Illegal score: " + score);
+    public int getPlayerOneSets() {
+        return playerOneSets;
+    }
+
+    public void setPlayerOneSets(int playerOneSets) {
+        this.playerOneSets = playerOneSets;
+    }
+
+    public int getPlayerTwoPoints() {
+        return playerTwoPoints;
+    }
+
+    public void setPlayerTwoPoints(int playerTwoPoints) {
+        this.playerTwoPoints = playerTwoPoints;
+    }
+
+    public int getPlayerTwoGames() {
+        return playerTwoGames;
+    }
+
+    public void setPlayerTwoGames(int playerTwoGames) {
+        this.playerTwoGames = playerTwoGames;
+    }
+
+    public int getPlayerTwoSets() {
+        return playerTwoSets;
+    }
+
+    public void setPlayerTwoSets(int playerTwoSets) {
+        this.playerTwoSets = playerTwoSets;
+    }
+
+    public Player getPlayerOne() {
+        return playerOne;
+    }
+
+    public void setPlayerOne(Player playerOne) {
+        this.playerOne = playerOne;
+    }
+
+    public Player getPlayerTwo() {
+        return playerTwo;
+    }
+
+    public void setPlayerTwo(Player playerTwo) {
+        this.playerTwo = playerTwo;
     }
 }
