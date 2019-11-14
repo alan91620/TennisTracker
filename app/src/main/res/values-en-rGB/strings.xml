@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="BouttonSuivantLocation">Next</string>
+    <string name="BouttonSuivantPhoto">Next</string>
+    <string name="Fragment_Historique">History</string>
+    <string name="Fragment_Menu">Menu</string>
+    <string name="Fragment_Reglage">Settings</string>
+    <string name="BouttonNewMatch">New match</string>
+    <string name="BouttonNewLocation">Locate</string>
+    <string name="title_historique">History</string>
+    <string name="title_menu">Menu</string>
+    <string name="title_activity_maps">Map</string>
+</resources>

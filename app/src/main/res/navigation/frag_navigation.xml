@@ -13,7 +13,7 @@
     <fragment
         android:id="@+id/navigation_reglage"
         android:name="com.example.myapplication.Controller.ProgressFrag.ProgressGameFragment"
-        tools:layout="@layout/fragment_progress" />
+        tools:layout="@layout/fragment_settings" />
 
     <fragment
         android:id="@+id/navigation_historique"

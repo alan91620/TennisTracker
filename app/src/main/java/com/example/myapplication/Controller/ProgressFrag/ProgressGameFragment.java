@@ -23,7 +23,7 @@ public class ProgressGameFragment extends Fragment {
 
 
 
-        return inflater.inflate(R.layout.fragment_progress,null);
+        return inflater.inflate(R.layout.fragment_settings,null);
     }
 
 
