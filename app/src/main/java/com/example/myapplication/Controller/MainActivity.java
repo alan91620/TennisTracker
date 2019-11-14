@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.navigation_menu, R.id.navigation_progress, R.id.navigation_historique)
+                R.id.navigation_menu, R.id.navigation_reglage, R.id.navigation_historique)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupWithNavController(navView, navController);
