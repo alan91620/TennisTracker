@@ -12,22 +12,22 @@
         android:roundIcon="@drawable/logo_app"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Controller.SplashScreen.SplashScreen"
+        <activity android:name=".Controller.NewMatch.PlayerSelect"></activity>
+        <activity
+            android:name=".Controller.SplashScreen.SplashScreen"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme">
-
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-            </activity>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".Controller.NewMatch.PhotoMatch" />
         <activity
             android:name=".Controller.NewMatch.LocationMatch"
             android:label="@string/title_activity_maps" />
-        <activity android:name=".Controller.MainActivity">
-        </activity>
+        <activity android:name=".Controller.MainActivity"></activity>
         <activity android:name=".Controller.ScoreBoard" />
 
         <meta-data

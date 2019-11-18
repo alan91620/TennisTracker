@@ -52,6 +52,12 @@ public class PhotoMatch extends AppCompatActivity {
 
     }
 
+    public void newSelectPlayer (View v) {
+        Intent intent = new Intent(this, PlayerSelect.class);
+
+        startActivity(intent);
+    }
+
     public void takePhoto(View view) {
 
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);

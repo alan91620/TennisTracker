@@ -10,4 +10,11 @@
     <string name="title_historique">History</string>
     <string name="title_menu">Menu</string>
     <string name="title_activity_maps">Map</string>
+    <string name="BouttonJouer">Play</string>
+    <string name="BouttonPrendrePhoto">Picture</string>
+    <string name="TexteHasard">Random</string>
+    <string name="TexteJoueur1">Player 1</string>
+    <string name="TexteJoueur2">Player 2</string>
+    <string name="TextePhoto">Picture</string>
+    <string name="app_name">Flash Tennis</string>
 </resources>

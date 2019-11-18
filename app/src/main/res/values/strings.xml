@@ -13,6 +13,15 @@
     <string name="BouttonNewLocation">Localiser</string>
     <string name="BouttonSuivantLocation">Suivant</string>
     <string name="BouttonSuivantPhoto">Suivant</string>
+    <string name="BouttonJouer">Jouer</string>
+    <string name="BouttonPrendrePhoto">Photo</string>
+
+    <string name="TexteJoueur1">Joueur 1</string>
+    <string name="TexteJoueur2">Joueur 2</string>
+    <string name="TexteHasard">Hasard</string>
+    <string name="TextePhoto">Photo</string>
+
+
 
 
 </resources>
