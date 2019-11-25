@@ -35,7 +35,7 @@
                 android:layout_weight="1" />
 
             <TextView
-                android:id="@+id/textView5"
+                android:id="@+id/p1points"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -84,7 +84,7 @@
                 android:layout_weight="1" />
 
             <TextView
-                android:id="@+id/textView7"
+                android:id="@+id/p2points"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -125,7 +125,7 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/button7"
+                android:id="@+id/p1Score"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/button_active"
@@ -147,7 +147,7 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/button8"
+                android:id="@+id/p2Score"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/button_active"
@@ -264,7 +264,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textView9"
+                android:id="@+id/p1Name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -277,7 +277,7 @@
                 android:layout_weight="1" />
 
             <TextView
-                android:id="@+id/textView8"
+                android:id="@+id/p2Name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -293,7 +293,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textView18"
+                android:id="@+id/p1Set"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -306,7 +306,7 @@
                 android:layout_weight="1" />
 
             <TextView
-                android:id="@+id/textView19"
+                android:id="@+id/p2Set"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -322,7 +322,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textView21"
+                android:id="@+id/p1s1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -335,7 +335,7 @@
                 android:layout_weight="1" />
 
             <TextView
-                android:id="@+id/textView22"
+                android:id="@+id/p2s1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -350,7 +350,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textView23"
+                android:id="@+id/p1s2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -363,7 +363,7 @@
                 android:layout_weight="1" />
 
             <TextView
-                android:id="@+id/textView24"
+                android:id="@+id/p2s2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -378,7 +378,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textView25"
+                android:id="@+id/p1s3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -391,7 +391,7 @@
                 android:layout_weight="1" />
 
             <TextView
-                android:id="@+id/textView26"
+                android:id="@+id/p2s3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -406,7 +406,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textView27"
+                android:id="@+id/p1s4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -419,7 +419,7 @@
                 android:layout_weight="1" />
 
             <TextView
-                android:id="@+id/textView28"
+                android:id="@+id/p2s4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -434,7 +434,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textView29"
+                android:id="@+id/p1s5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -447,7 +447,7 @@
                 android:layout_weight="1" />
 
             <TextView
-                android:id="@+id/textView30"
+                android:id="@+id/p2s5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"

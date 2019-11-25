@@ -68,9 +68,6 @@ public class Player {
 
     @Override
     public String toString() {
-        return "Player{" +
-                "first_name='" + first_name + '\'' +
-                ", last_name='" + last_name + '\'' +
-                '}';
+        return first_name + " " + last_name;
     }
 }
