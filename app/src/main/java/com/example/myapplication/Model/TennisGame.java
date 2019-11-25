@@ -17,11 +17,26 @@ public class TennisGame {
     Boolean p2isServing = false;
     Boolean p1StartServing = false;
     Boolean p2StartServing = false;
+    int setNum;
+    ArrayList <String> GameHist;
 
     public TennisGame(Player playerOne, Player playerTwo) {
         this.playerOne = playerOne;
         this.playerTwo = playerTwo;
         randServingPlayer();
+        this.setNum = 1;
+        GameHist = new ArrayList<>();
+
+        GameHist.add(0,"0");
+        GameHist.add(1,"0");
+        GameHist.add(2,"0");
+        GameHist.add(3,"0");
+        GameHist.add(4,"0");
+        GameHist.add(5,"0");
+        GameHist.add(6,"0");
+        GameHist.add(7,"0");
+        GameHist.add(8,"0");
+        GameHist.add(9,"0");
     }
 
     public void randServingPlayer(){
@@ -104,6 +119,8 @@ public class TennisGame {
         return  scores;
     }
 
+
+
     public void resetPoints(){
         playerOnePoints = 0;
         playerTwoPoints = 0;
@@ -140,15 +157,44 @@ public class TennisGame {
         }
     }
 
+    public void addGamesHistory(){
+        switch (setNum){
+            case 1 :
+                GameHist.add(0,String.valueOf(playerOneGames));
+                GameHist.add(1,String.valueOf(playerTwoGames));
+                break;
+            case 2 :
+                GameHist.add(2,String.valueOf(playerOneGames));
+                GameHist.add(3,String.valueOf(playerTwoGames));
+                break;
+            case 3 :
+                GameHist.add(4,String.valueOf(playerOneGames));
+                GameHist.add(5,String.valueOf(playerTwoGames));
+                break;
+            case 4 :
+                GameHist.add(6,String.valueOf(playerOneGames));
+                GameHist.add(7,String.valueOf(playerTwoGames));
+                break;
+            case 5 :
+                GameHist.add(8,String.valueOf(playerOneGames));
+                GameHist.add(9,String.valueOf(playerTwoGames));
+                break;
+        }
+    }
+
 
     public void checkForSet(){
         //if (p1isServing == true){
             if (playerOneGames > playerTwoGames+1 && playerOneGames >= 6){
                 playerOneSets ++;
+                addGamesHistory();
+                setNum++;
                 resetGames();
             }
             else if (playerTwoGames > playerOneGames+1 && playerTwoGames >= 6){
                 playerTwoSets ++;
+                addGamesHistory();
+                setNum++;
                 resetGames();
             }
         /**}
@@ -166,17 +212,9 @@ public class TennisGame {
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
+    public ArrayList<String> getGameHist() {
+        return GameHist;
+    }
 
     public int getPlayerOnePoints() {
         return playerOnePoints;
