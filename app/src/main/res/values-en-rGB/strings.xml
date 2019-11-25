@@ -17,4 +17,9 @@
     <string name="TexteJoueur2">Player 2</string>
     <string name="TextePhoto">Picture</string>
     <string name="app_name">Flash Tennis</string>
+    <string name="Fragment_Location">Location</string>
+    <string name="Fragment_Picture">Picture</string>
+    <string name="Fragment_Score">Score</string>
+    <string name="TexteNom">Last Name</string>
+    <string name="TextePrénom">First Name</string>
 </resources>

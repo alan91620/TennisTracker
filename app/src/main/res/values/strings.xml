@@ -20,8 +20,8 @@
     <string name="TexteJoueur2">Joueur 2</string>
     <string name="TexteHasard">Hasard</string>
     <string name="TextePhoto">Photo</string>
-
-
+    <string name="TextePrénom">Prénom</string>
+    <string name="TexteNom">Nom</string>
 
 
 </resources>

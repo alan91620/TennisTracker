@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
     }
 
     public void scoreBoardMenu(View v) {
-        Intent intent = new Intent(this, ScoreBoard.class);
+        Intent intent = new Intent(this, ScoreBoard2.class);
 
         startActivity(intent);
     }
