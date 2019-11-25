@@ -32,6 +32,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
@@ -57,6 +58,10 @@ public class LocationMatch extends FragmentActivity implements LocationListener,
     ConstraintLayout linearLayout;
     Geocoder geocoder;
     List<Address> addresses;
+
+    private Date dateMesure;
+
+    public static String adresseMatch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -158,6 +163,7 @@ public void choseProvider(){
                     e.printStackTrace();
                 }
                 Adresse.setText(addresses.get(0).getAddressLine(0));
+                adresseMatch = addresses.get(0).getAddressLine(0);
 
             } else {
                 //This is what you need:
@@ -195,12 +201,16 @@ public void choseProvider(){
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(coord, 15));
     }
 
+    public static String getAdresseMatch() {
+        return adresseMatch;
+    }
+
     private boolean canAccessLocation() {
         return(hasPermission(Manifest.permission.ACCESS_FINE_LOCATION));
     }
 
-    private boolean canAccessCamera() {
-        return(hasPermission(Manifest.permission.CAMERA));
+    public Date getDateMesure() {
+        return dateMesure;
     }
 
     private boolean hasPermission(String perm) {
