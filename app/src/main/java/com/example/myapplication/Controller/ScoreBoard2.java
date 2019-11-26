@@ -8,8 +8,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.*;
 
 import com.example.myapplication.Model.Player;
@@ -45,7 +43,6 @@ public class ScoreBoard2 extends AppCompatActivity {
     TextView p2Name;
 
     Button endMatch;
-
 
     TennisGame game;
 
@@ -83,11 +80,12 @@ public class ScoreBoard2 extends AppCompatActivity {
 
         handler = new Handler();
 
-        final Player player1 = new Player("test","test",13,13,13,"frace");
-        final Player player2 = new Player("2","2",13,13,13,"frace");
+        Object p1 = getIntent().getSerializableExtra("p1");
+        Object p2 = getIntent().getSerializableExtra("p2");
+        final Player player1 = (Player)p1;
+        final Player player2 = (Player)p2;
 
         game = new TennisGame(player1, player2);
-        final ArrayList<String> score = game.getScore();
 
         p1Score.setOnClickListener(new View.OnClickListener() {
             @Override

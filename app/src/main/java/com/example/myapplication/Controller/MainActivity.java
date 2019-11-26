@@ -72,11 +72,11 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
         startActivity(intent);
     }
 
-    public void scoreBoardMenu(View v) {
+    /*public void scoreBoardMenu(View v) {
         Intent intent = new Intent(this, ScoreBoard2.class);
 
         startActivity(intent);
-    }
+    }*/
 
     public void mySqlConnector(){
         Runnable runnable = new Runnable() {
