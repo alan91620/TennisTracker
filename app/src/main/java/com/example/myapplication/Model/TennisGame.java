@@ -232,11 +232,11 @@ public class TennisGame implements Serializable {
     }
 
     public String getPlayer1LastName(){
-        return playerOne.getFirst_name();
+        return playerOne.getLast_name();
     }
 
     public String getPlayer2LastName(){
-        return playerOne.getFirst_name();
+        return playerOne.getLast_name();
     }
     public int getPlayerOnePoints() {
         return playerOnePoints;
