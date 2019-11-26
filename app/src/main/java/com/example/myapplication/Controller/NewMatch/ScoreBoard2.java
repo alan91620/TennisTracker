@@ -127,6 +127,7 @@ public class ScoreBoard2 extends AppCompatActivity {
         endMatch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                SaveAndQuit(view);
                 try {
                 Class.forName("com.mysql.jdbc.Driver");
                 Connection con= null;
