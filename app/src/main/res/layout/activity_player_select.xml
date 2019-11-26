@@ -79,14 +79,14 @@
                         android:text="@string/TextePhoto" />
 
                     <ImageView
-                        android:id="@+id/image2"
+                        android:id="@+id/p1Photo"
                         android:layout_width="match_parent"
                         android:layout_height="155dp"
                         android:visibility="visible"
                         app:srcCompat="@drawable/ic_photo" />
 
                     <Button
-                        android:id="@+id/button2"
+                        android:id="@+id/btp1Photo"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/button_active"
@@ -149,14 +149,14 @@
                         android:text="@string/TextePhoto" />
 
                     <ImageView
-                        android:id="@+id/image5"
+                        android:id="@+id/p2Photo"
                         android:layout_width="match_parent"
                         android:layout_height="155dp"
                         android:visibility="visible"
                         app:srcCompat="@drawable/ic_photo" />
 
                     <Button
-                        android:id="@+id/button5"
+                        android:id="@+id/btp2Photo"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/button_active"

@@ -29,7 +29,6 @@
             android:name=".Controller.NewMatch.LocationMatch"
             android:label="@string/title_activity_maps" />
         <activity android:name=".Controller.MainActivity" />
-        <activity android:name=".Controller.ScoreBoard" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"

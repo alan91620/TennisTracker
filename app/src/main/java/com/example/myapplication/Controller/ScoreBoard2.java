@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -46,6 +47,8 @@ public class ScoreBoard2 extends AppCompatActivity {
 
     TennisGame game;
 
+    ImageView ImP1, ImP2;
+
     private Handler handler;
 
     @Override
@@ -78,12 +81,20 @@ public class ScoreBoard2 extends AppCompatActivity {
         p2Points = findViewById(R.id.p2points);
         endMatch = findViewById(R.id.EndMatch);
 
+        ImP1 = findViewById(R.id.ImP1);
+        ImP2 = findViewById(R.id.ImP2);
+
         handler = new Handler();
 
         Object p1 = getIntent().getSerializableExtra("p1");
         Object p2 = getIntent().getSerializableExtra("p2");
         final Player player1 = (Player)p1;
         final Player player2 = (Player)p2;
+
+        Object p1Photo = getIntent().getSerializableExtra("p1Photo");
+        Object p2Photo = getIntent().getSerializableExtra("p2Photo");
+        final Bitmap player1Photo = (Bitmap)p1Photo;
+        final Bitmap player2Photo = (Bitmap)p2Photo;
 
         game = new TennisGame(player1, player2);
 
@@ -109,7 +120,8 @@ public class ScoreBoard2 extends AppCompatActivity {
                     public void run() {
                         p1Name.setText(player1.toString());
                         p2Name.setText(player2.toString());
-
+                        ImP1.setImageBitmap(player1Photo);
+                        ImP2.setImageBitmap(player2Photo);
                     }
                 });
             }

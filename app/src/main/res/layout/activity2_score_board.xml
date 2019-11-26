@@ -18,7 +18,7 @@
             android:orientation="vertical">
 
             <ImageView
-                android:id="@+id/imageView3"
+                android:id="@+id/ImP1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/ic_photo" />
@@ -121,7 +121,7 @@
             android:orientation="vertical">
 
             <ImageView
-                android:id="@+id/imageView4"
+                android:id="@+id/ImP2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/ic_photo" />
