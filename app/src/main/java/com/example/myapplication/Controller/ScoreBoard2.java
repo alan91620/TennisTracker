@@ -3,6 +3,7 @@ package com.example.myapplication.Controller;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -37,9 +38,13 @@ public class ScoreBoard2 extends AppCompatActivity {
     TextView p2s5;
     TextView p1Points;
     TextView p2Points;
+    TextView p1Games;
+    TextView p2Games;
 
     TextView p1Name;
     TextView p2Name;
+
+    Button endMatch;
 
 
     TennisGame game;
@@ -69,8 +74,12 @@ public class ScoreBoard2 extends AppCompatActivity {
         p1Name = findViewById(R.id.p1Name);
         p2Name = findViewById(R.id.p2Name);
 
+        p1Games = findViewById(R.id.p1Games);
+        p2Games = findViewById(R.id.p2Games);
+
         p1Points = findViewById(R.id.p1points);
         p2Points = findViewById(R.id.p2points);
+        endMatch = findViewById(R.id.EndMatch);
 
         handler = new Handler();
 
@@ -125,8 +134,8 @@ public class ScoreBoard2 extends AppCompatActivity {
                     public void run() {
                         p1Points.setText(score.get(0));
                         p2Points.setText(score.get(3));
-                        //jeu1.setText(score.get(1));
-                        //jeu2.setText(score.get(4));
+                        p1Games.setText(score.get(1));
+                        p2Games.setText(score.get(4));
                         p1Sets.setText(score.get(2));
                         p2Sets.setText(score.get(5));
 
@@ -153,10 +162,33 @@ public class ScoreBoard2 extends AppCompatActivity {
     public void player1_score(){
         game.PlayerOneScore();
         updateUI_Scores();
+        chckEndMatch();
     }
 
     public void player2_score(){
         game.PlayerTwoScore();
         updateUI_Scores();
+        chckEndMatch();
+    }
+
+    public void chckEndMatch(){
+        final ArrayList<String> score = game.getScore();
+        if (Integer.parseInt(score.get(2)) == 3 || Integer.parseInt(score.get(5)) == 3){
+            Runnable runnable = new Runnable() {
+                @Override
+                public void run() {
+                    handler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            endMatch.setVisibility(View.VISIBLE);
+                            p1Score.setVisibility(View.INVISIBLE);
+                            p2Score.setVisibility(View.INVISIBLE);
+                        }
+                    });
+                }
+            };
+
+            new Thread(runnable).start();
+        }
     }
 }

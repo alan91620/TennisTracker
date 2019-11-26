@@ -22,4 +22,6 @@
     <string name="Fragment_Score">Score</string>
     <string name="TexteNom">Last Name</string>
     <string name="TextePrénom">First Name</string>
+
+    <string name="Point">Point</string>
 </resources>

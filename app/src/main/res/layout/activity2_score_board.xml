@@ -48,7 +48,7 @@
                 android:layout_weight="1" />
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/p1Games"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -105,7 +105,7 @@
                 android:layout_weight="1" />
 
             <TextView
-                android:id="@+id/textView10"
+                android:id="@+id/p2Games"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -144,11 +144,11 @@
                 android:id="@+id/p1Score"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/button_active"
-                android:textAllCaps="false"
-                android:textColor="#FFFFFF"
                 android:layout_weight="1"
-                android:text="Button" />
+                android:background="@drawable/button_active"
+                android:text="@string/Point"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF" />
         </LinearLayout>
 
         <Space
@@ -166,11 +166,11 @@
                 android:id="@+id/p2Score"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/button_active"
-                android:textAllCaps="false"
-                android:textColor="#FFFFFF"
                 android:layout_weight="1"
-                android:text="Button" />
+                android:background="@drawable/button_active"
+                android:text="@string/Point"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF" />
         </LinearLayout>
     </LinearLayout>
 
@@ -484,13 +484,14 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/button3"
+                android:id="@+id/EndMatch"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/button_active"
                 android:text="Button"
                 android:textAllCaps="false"
-                android:textColor="#FFFFFF" />
+                android:textColor="#FFFFFF"
+                android:visibility="invisible" />
         </LinearLayout>
 
     </LinearLayout>

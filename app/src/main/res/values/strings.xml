@@ -23,5 +23,7 @@
     <string name="TextePrénom">Prénom</string>
     <string name="TexteNom">Nom</string>
 
+    <string name="Point">Point</string>
+
 
 </resources>
