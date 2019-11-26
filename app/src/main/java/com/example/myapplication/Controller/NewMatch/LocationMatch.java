@@ -61,7 +61,7 @@ public class LocationMatch extends FragmentActivity implements LocationListener,
 
     private Date dateMesure;
 
-    public static String adresseMatch;
+    private static String adresseMatch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -217,6 +217,7 @@ public void choseProvider(){
             return false;
         }
     }
+
 
     @Override
     public void onLocationChanged(Location location) {

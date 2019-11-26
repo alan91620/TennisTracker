@@ -489,6 +489,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/button_active"
                 android:text="Button"
+                android:onClick="SaveAndQuit"
                 android:textAllCaps="false"
                 android:textColor="#FFFFFF"
                 android:visibility="invisible" />

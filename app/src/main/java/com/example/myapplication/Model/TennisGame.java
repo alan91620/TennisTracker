@@ -7,7 +7,7 @@ public class TennisGame {
 
     private int playerOnePoints = 0;
     private int playerOneGames = 0;
-    private int playerOneSets = 0;
+    private int playerOneSets = 0; //nombre set gagné
     private int playerTwoPoints = 0;
     private int playerTwoGames = 0;
     private int playerTwoSets = 0;
@@ -18,11 +18,13 @@ public class TennisGame {
     Boolean p1StartServing = false;
     Boolean p2StartServing = false;
     int setNum;
+    String adresseMatch;
     ArrayList <String> GameHist;
 
-    public TennisGame(Player playerOne, Player playerTwo) {
+    public TennisGame(Player playerOne, Player playerTwo, String adresse) {
         this.playerOne = playerOne;
         this.playerTwo = playerTwo;
+        this.adresseMatch = adresse;
         randServingPlayer();
         this.setNum = 1;
         GameHist = new ArrayList<>();
@@ -126,6 +128,10 @@ public class TennisGame {
         playerTwoPoints = 0;
     }
 
+    public String getAdresseMatch() {
+        return adresseMatch;
+    }
+
     public void resetGames(){
         playerOneGames = 0;
         playerTwoGames = 0;
@@ -159,9 +165,9 @@ public class TennisGame {
 
     public void addGamesHistory(){
         switch (setNum){
-            case 1 :
-                GameHist.add(0,String.valueOf(playerOneGames));
-                GameHist.add(1,String.valueOf(playerTwoGames));
+            case 1 : // Set 1
+                GameHist.add(0,String.valueOf(playerOneGames)); //Nombre jeu gagné joueur 1
+                GameHist.add(1,String.valueOf(playerTwoGames)); //Nombre jeu gagné joueur 2
                 break;
             case 2 :
                 GameHist.add(2,String.valueOf(playerOneGames));
@@ -216,6 +222,21 @@ public class TennisGame {
         return GameHist;
     }
 
+    public String getPlayer1FirstName(){
+        return playerOne.getFirst_name();
+    }
+
+    public String getPlayer2FirstName(){
+        return playerTwo.getFirst_name();
+    }
+
+    public String getPlayer1LastName(){
+        return playerOne.getFirst_name();
+    }
+
+    public String getPlayer2LastName(){
+        return playerOne.getFirst_name();
+    }
     public int getPlayerOnePoints() {
         return playerOnePoints;
     }

@@ -3,6 +3,7 @@ package com.example.myapplication.Controller;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Build;
@@ -11,6 +12,8 @@ import android.os.Handler;
 import android.view.View;
 import android.widget.*;
 
+import com.example.myapplication.Controller.NewMatch.LocationMatch;
+import com.example.myapplication.Model.AccesLocal;
 import com.example.myapplication.Model.Player;
 import com.example.myapplication.Model.TennisGame;
 import com.example.myapplication.R;
@@ -51,6 +54,8 @@ public class ScoreBoard2 extends AppCompatActivity {
 
     private Handler handler;
 
+    private AccesLocal accesLocal;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -86,6 +91,8 @@ public class ScoreBoard2 extends AppCompatActivity {
 
         handler = new Handler();
 
+        accesLocal = new AccesLocal(this);
+
         Object p1 = getIntent().getSerializableExtra("p1");
         Object p2 = getIntent().getSerializableExtra("p2");
         final Player player1 = (Player)p1;
@@ -96,7 +103,7 @@ public class ScoreBoard2 extends AppCompatActivity {
         final Bitmap player1Photo = (Bitmap)p1Photo;
         final Bitmap player2Photo = (Bitmap)p2Photo;
 
-        game = new TennisGame(player1, player2);
+        game = new TennisGame(player1, player2, LocationMatch.getAdresseMatch());
 
         p1Score.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -133,6 +140,13 @@ public class ScoreBoard2 extends AppCompatActivity {
 
     }
 
+
+    public void SaveAndQuit(View v){
+
+        accesLocal.ajout(game);
+
+
+    }
     public void updateUI_Scores(){
         final ArrayList<String> score = game.getScore();
         final ArrayList<String> memGames = game.getGameHist();
