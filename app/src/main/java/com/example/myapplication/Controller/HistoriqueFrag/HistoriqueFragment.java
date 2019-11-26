@@ -5,33 +5,42 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.myapplication.Model.AccesLocal;
+import com.example.myapplication.Model.HistoryMatch;
 import com.example.myapplication.R;
 
 public class HistoriqueFragment extends Fragment {
     private static AccesLocal accesLocal;
-
+    private static HistoryMatch historyMatch;
+    private EditText Name;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         recupMatch();
 
+        
         return inflater.inflate(R.layout.fragment_historique,null);
     }
 
 
+
+
     private void recupMatch(){
 
-
+        accesLocal = new AccesLocal(this.getContext());
+        historyMatch =  accesLocal.recupDernier();
 
 
     }
+
+
 
 
 }
