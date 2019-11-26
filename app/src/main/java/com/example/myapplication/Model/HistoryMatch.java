@@ -1,16 +1,9 @@
 package com.example.myapplication.Model;
-
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.os.Bundle;
-
-import com.example.myapplication.R;
-
 import java.util.ArrayList;
 
 
 
-public class HistoriqueActivity extends AppCompatActivity {
+public class HistoryMatch {
     private String joueur1FirstName;
     private String joueur2FirstName;
     private String joueur1LastName;
@@ -19,15 +12,8 @@ public class HistoriqueActivity extends AppCompatActivity {
     ArrayList <String> GameHist;
 
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_historique);
 
-
-    }
-
-    public HistoriqueActivity(String joueur1FirstName,String joueur2FirstName,String joueur1LastName,String joueur2LastName,ArrayList <String> Score,String streetName) {
+    public HistoryMatch(String joueur1FirstName, String joueur2FirstName, String joueur1LastName, String joueur2LastName, ArrayList <String> Score, String streetName) {
 
         this.joueur1FirstName = joueur1FirstName;
         this.joueur2FirstName = joueur2FirstName;

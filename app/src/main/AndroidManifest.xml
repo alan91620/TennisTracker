@@ -12,7 +12,6 @@
         android:roundIcon="@drawable/logo_app"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Model.HistoriqueActivity"></activity>
         <activity android:name=".Controller.NewMatch.ScoreBoard2"></activity>
         <activity android:name=".Controller.NewMatch.PlayerSelect" />
         <activity

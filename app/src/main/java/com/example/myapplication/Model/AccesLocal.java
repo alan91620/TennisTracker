@@ -5,7 +5,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.example.myapplication.Controller.MySQLiteOpenHelper;
-import com.example.myapplication.Controller.NewMatch.LocationMatch;
 
 import java.util.ArrayList;
 
@@ -33,10 +32,10 @@ public class AccesLocal {
     }
 
 
-    public HistoriqueActivity recupDernier(){
+    public HistoryMatch recupDernier(){
 
         bd = accesBD.getReadableDatabase();
-        HistoriqueActivity historique = null;
+        HistoryMatch historique = null;
         String req = "select* from matchs";
         Cursor curseur = bd.rawQuery(req,null);
         curseur.moveToLast();
@@ -60,7 +59,7 @@ public class AccesLocal {
             GameHist.add(9,curseur.getString(13));
             String AdresseMatch = curseur.getString(14);
 
-            historique = new HistoriqueActivity(FirstNameJ1,FirstNameJ2,LastNameJ1,LastNameJ2,GameHist,AdresseMatch);
+            historique = new HistoryMatch(FirstNameJ1,FirstNameJ2,LastNameJ1,LastNameJ2,GameHist,AdresseMatch);
         }
 
         curseur.close();

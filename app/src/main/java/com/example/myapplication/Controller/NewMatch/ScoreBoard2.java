@@ -19,11 +19,14 @@ import com.example.myapplication.Model.Player;
 import com.example.myapplication.Model.TennisGame;
 import com.example.myapplication.R;
 
-import java.sql.Connection;
+/*import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.SQLException;*/
 import java.util.ArrayList;
+
+
+
 
 
 public class ScoreBoard2 extends AppCompatActivity {
@@ -128,7 +131,7 @@ public class ScoreBoard2 extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 SaveAndQuit(view);
-                try {
+                /*try {
                 Class.forName("com.mysql.jdbc.Driver");
                 Connection con= null;
                     con = DriverManager.getConnection(
@@ -139,7 +142,7 @@ public class ScoreBoard2 extends AppCompatActivity {
                 }
                 catch (Exception e) {
                     e.printStackTrace();
-                }
+                }*/
 
 
             }
