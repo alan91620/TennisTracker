@@ -27,7 +27,7 @@ public class AccesLocal {
         bd = accesBD.getWritableDatabase();
 
         String req = "insert into matchs (joueur1FirstName, joueur2FirstName, joueur1LastName,joueur2LastName,set1ScoreJoueur1,set1ScoreJoueur2,set2ScoreJoueur1,set2ScoreJoueur2,set3ScoreJoueur1,set3ScoreJoueur2,set4ScoreJoueur1,set4ScoreJoueur2,set5ScoreJoueur1, set5ScoreJoueur2, streetName) ";
-        req+= "values("+Game.getPlayer1FirstName()+","+Game.getPlayer2FirstName()+","+Game.getPlayer1LastName()+","+Game.getPlayer2LastName()+","+ Game.getGameHist().get(0)+","+Game.getGameHist().get(1)+","+Game.getGameHist().get(2)+","+Game.getGameHist().get(3)+","+Game.getGameHist().get(4)+","+Game.getGameHist().get(5)+","+Game.getGameHist().get(6)+","+Game.getGameHist().get(7)+","+Game.getGameHist().get(8)+","+Game.getGameHist().get(9)+","+Game.getAdresseMatch()+")";
+        req+= "values('"+Game.getPlayer1FirstName()+"','"+Game.getPlayer2FirstName()+"','"+Game.getPlayer1LastName()+"','"+Game.getPlayer2LastName()+"','"+ Game.getGameHist().get(0)+"','"+Game.getGameHist().get(1)+"','"+Game.getGameHist().get(2)+"','"+Game.getGameHist().get(3)+"','"+Game.getGameHist().get(4)+"','"+Game.getGameHist().get(5)+"','"+Game.getGameHist().get(6)+"','"+Game.getGameHist().get(7)+"','"+Game.getGameHist().get(8)+"','"+Game.getGameHist().get(9)+"','"+Game.getAdresseMatch()+"')";
 
         bd.execSQL(req);
     }

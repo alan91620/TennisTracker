@@ -160,7 +160,7 @@ public void choseProvider(){
                     e.printStackTrace();
                 }
                 Adresse.setText(addresses.get(0).getAddressLine(0));
-                adresseMatch = addresses.get(0).getAddressLine(0);
+                adresseMatch = addresses.get(0).getAddressLine(0).replaceAll(",","").replaceAll("\\s","");
 
             } else {
                 //This is what you need:
