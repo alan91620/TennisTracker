@@ -6,19 +6,14 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.AnimationDrawable;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
 import android.provider.MediaStore;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.myapplication.Controller.ScoreBoard2;
 import com.example.myapplication.Model.Player;
 import com.example.myapplication.R;
 
@@ -102,7 +97,6 @@ public class PlayerSelect extends AppCompatActivity {
                 intent.putExtra("p2",p2);
                 intent.putExtra("p1Photo",BitP1);
                 intent.putExtra("p2Photo",BitP2);
-
 
                 startActivity(intent);
 

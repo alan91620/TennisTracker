@@ -1,9 +1,10 @@
 package com.example.myapplication.Model;
 
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class TennisGame {
+public class TennisGame implements Serializable {
 
     private int playerOnePoints = 0;
     private int playerOneGames = 0;

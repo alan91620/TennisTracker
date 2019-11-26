@@ -1,4 +1,4 @@
-package com.example.myapplication.Controller;
+package com.example.myapplication.Controller.NewMatch;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -14,10 +14,15 @@ import android.widget.*;
 
 import com.example.myapplication.Controller.NewMatch.LocationMatch;
 import com.example.myapplication.Model.AccesLocal;
+import com.example.myapplication.Controller.DataBaseTools;
 import com.example.myapplication.Model.Player;
 import com.example.myapplication.Model.TennisGame;
 import com.example.myapplication.R;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 
@@ -116,6 +121,26 @@ public class ScoreBoard2 extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 player2_score();
+            }
+        });
+
+        endMatch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                Class.forName("com.mysql.jdbc.Driver");
+                Connection con= null;
+                    con = DriverManager.getConnection(
+                            "jdbc:mysql://10.0.2.2:3306/flashtennis","root","");
+                    PreparedStatement ps = con.prepareStatement(
+                            "INSERT INTO match (data) VALUES (?)");
+                    DataBaseTools.write(game, ps, 1);
+                }
+                catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+
             }
         });
 
